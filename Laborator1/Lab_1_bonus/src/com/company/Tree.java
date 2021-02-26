@@ -122,13 +122,15 @@ public class Tree {
 
     public void partialTree(int x) {
         if (n <= x) System.out.println("Nodul introdus nu exista!");
-        else if (!isConnected)
-            System.out.println("Graful tau nu este conex deci nu se poate genera un arbore partial");
-        else {
+        else while(isConnected==false)
+        {
+         matrixGenerate();
+         isConnected();
+        }
             bfs(x);
             generateTree(x);
 
-        }
+
     }
 
 }
