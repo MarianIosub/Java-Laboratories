@@ -18,6 +18,9 @@ public class Main {
             problem.addStudent(student);
         for (School school : schools)
             problem.addSchool(school);
+        schools[0].setCapacity(1);
+        schools[1].setCapacity(2);
+        schools[2].setCapacity(2);
         problem.addSchoolPrefForStudent(students[0], Arrays.asList(schools[0], schools[1], schools[2]));
         problem.addSchoolPrefForStudent(students[1], Arrays.asList(schools[0], schools[1], schools[2]));
         problem.addSchoolPrefForStudent(students[2], Arrays.asList(schools[0], schools[1]));
