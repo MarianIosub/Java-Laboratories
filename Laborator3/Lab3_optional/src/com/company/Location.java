@@ -4,9 +4,9 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Location implements Comparable<Location> {
+public abstract class Location implements Visitable, Comparable<Location> {
     private String name;
-    private LocalTime openingTime;
+
     private Map<Location, Integer> cost = new HashMap<>();
 
     public Location() {
@@ -32,9 +32,7 @@ public abstract class Location implements Comparable<Location> {
         this.cost = cost;
     }
 
-    public LocalTime getOpeningTime() {
-        return openingTime;
-    }
+
 
     @Override
     public int compareTo(Location other) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class City {
+public class City implements Visitable {
     private List<Location> nodes = new ArrayList<>();
     String name;
     public City() {
