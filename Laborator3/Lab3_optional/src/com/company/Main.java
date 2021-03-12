@@ -57,5 +57,6 @@ public class Main {
         TravelPlan plan=new TravelPlan(c);
         plan.setPreferences(Arrays.asList(h4,h5,h3,h2,h1,h6));
         System.out.println(plan);
+        plan.planSolution(h1,h4);
     }
 }
