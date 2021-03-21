@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="lab5_optional:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab5_optional_jar</output-path>
+    <root id="archive" name="lab5_optional.jar">
+      <element id="module-output" name="lab5_optional" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
