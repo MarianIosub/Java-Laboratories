@@ -92,11 +92,14 @@ public class Shell {
                 }
                 case "report":{
                     try {
+                        if(catalog==null){
+                            throw new InvalidCatalogException();
+                        }
                         ReportCommand.getReport(catalog);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    }catch(Exception exception){
+                        exception.getMessage();
                     }
-                    continue;
+
                 }
             }
         }
