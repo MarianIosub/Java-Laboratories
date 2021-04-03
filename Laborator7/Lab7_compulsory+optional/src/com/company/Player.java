@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private List<Token> tokens=new ArrayList<>();
     private int score;
+    private boolean bot=true;
 
     public Player(String name) {
         this.name = name;
@@ -32,5 +33,17 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setBot(boolean bot) {
+        this.bot = bot;
+    }
+
+    public boolean isBot() {
+        return bot;
+    }
+
+    public List<Token> getTokens() {
+        return tokens;
     }
 }

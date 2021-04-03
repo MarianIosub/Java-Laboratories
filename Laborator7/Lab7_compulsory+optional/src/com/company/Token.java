@@ -10,10 +10,13 @@ public class Token {
 
     public Token(Integer maxValue) {
         this.maxValue = maxValue;
-        Random random=new Random();
-        leftValue=random.nextInt(maxValue)+1;
-        rightValue=random.nextInt(maxValue)+1;
-        scoreValue=random.nextInt(10);
+        Random random = new Random();
+        leftValue = random.nextInt(maxValue) + 1;
+        rightValue = leftValue;
+        while (rightValue == leftValue) {
+            rightValue = random.nextInt(maxValue) + 1;
+        }
+        scoreValue = random.nextInt(10);
     }
 
 
@@ -21,8 +24,8 @@ public class Token {
     public String toString() {
         return
                 leftValue +
-                "/" + rightValue +
-                " with score: " + scoreValue
+                        "/" + rightValue +
+                        " with score: " + scoreValue
                 ;
     }
 
