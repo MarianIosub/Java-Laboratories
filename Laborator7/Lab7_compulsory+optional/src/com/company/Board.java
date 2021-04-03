@@ -19,7 +19,7 @@ public class Board {
         System.out.println("The board has " + noOfTokens + " tokens.");
         for (Token token : board) {
 
-            System.out.print(board.indexOf(token)+": ");
+            System.out.print(board.indexOf(token) + ": ");
             System.out.println(token);
         }
 

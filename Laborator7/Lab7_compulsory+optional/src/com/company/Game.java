@@ -16,6 +16,7 @@ public class Game {
     public void addPlayer(Player player) {
         players.add(player);
     }
+
     public void startGame() {
         final Integer[] chosenToken = {-1};
         final int[] playerIndex = {0};
@@ -41,9 +42,9 @@ public class Game {
                                 chosen = true;
                             }
                         }
-                    }else{
-                        Random random=new Random();
-                        chosenToken[0]= random.nextInt(board.getBoard().size());
+                    } else {
+                        Random random = new Random();
+                        chosenToken[0] = random.nextInt(board.getBoard().size());
                     }
                     System.out.println("You have chosen the token: " + board.getBoard().get(chosenToken[0]));
                     players.get(playerIndex[0]).addToken(board.getBoard().get(chosenToken[0]));
