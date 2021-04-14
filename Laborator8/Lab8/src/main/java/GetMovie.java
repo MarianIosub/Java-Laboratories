@@ -3,9 +3,8 @@ import java.util.Scanner;
 
 public class GetMovie {
 
-    public static void findMovieByName() throws SQLException {
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
+    public static void findMovieByName(Connection connection) throws SQLException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your film title: ");
         String title = scanner.nextLine();
@@ -26,9 +25,8 @@ public class GetMovie {
         }
     }
 
-    public static void findMovieByID() throws SQLException {
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
+    public static void findMovieByID(Connection connection) throws SQLException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your film ID: ");
         Integer id = scanner.nextInt();

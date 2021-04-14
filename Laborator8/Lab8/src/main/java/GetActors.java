@@ -5,12 +5,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GetActors {
-    public static void findActorsofFilm() throws SQLException {
+    public static void findActorsofFilm(Connection connection) throws SQLException {
         System.out.print("Please input your movie title: ");
         Scanner scanner=new Scanner(System.in);
         String movie=scanner.nextLine();
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
         PreparedStatement statement=connection.prepareStatement("Select ID from movies where title=?");
         statement.setString(1,movie);
         ResultSet resultSet=statement.executeQuery();

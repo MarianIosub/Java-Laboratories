@@ -5,9 +5,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AddMovie {
-    public static void insertMovie() throws SQLException {
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
+    public static void insertMovie(Connection connection) throws SQLException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your movie title: ");
         String title = scanner.nextLine();

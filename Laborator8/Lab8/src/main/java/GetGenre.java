@@ -5,9 +5,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GetGenre {
-    public static void findGenreByName() throws SQLException {
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
+    public static void findGenreByName(Connection connection) throws SQLException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your Genre title: ");
         String title = scanner.nextLine();
@@ -21,13 +20,11 @@ public class GetGenre {
             System.out.print(" and the genre is: " + rs.getString("genre"));
         }
         if (!found) {
-            System.out.println("Your film wasn't found");
+            System.out.println("Your genre wasn't found");
         }
     }
 
-    public static void findGenreByID() throws SQLException {
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
+    public static void findGenreByID(Connection connection) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your Genre ID: ");
         Integer id = scanner.nextInt();
@@ -41,7 +38,7 @@ public class GetGenre {
             System.out.print(" and the genre is: " + rs.getString("genre"));
         }
         if (!found) {
-            System.out.println("Your film wasn't found");
+            System.out.println("Your genre wasn't found");
         }
     }
 }

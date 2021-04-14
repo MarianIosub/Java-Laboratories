@@ -1,44 +1,47 @@
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void shell() throws SQLException, InterruptedException {
+        DBConnection dbConnection = DBConnection.getDBConnection();
+        Connection connection = dbConnection.getConnection();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             shellCommands();
             String commandIndex = scanner.nextLine();
             switch (commandIndex) {
                 case "1": {
-                    GetMovie.findMovieByID();
+                    GetMovie.findMovieByID(connection);
                     continue;
                 }
                 case "2": {
-                    GetMovie.findMovieByName();
+                    GetMovie.findMovieByName(connection);
                     continue;
                 }
                 case "3": {
-                    GetGenre.findGenreByID();
+                    GetGenre.findGenreByID(connection);
                     continue;
                 }
                 case "4": {
-                    GetGenre.findGenreByName();
+                    GetGenre.findGenreByName(connection);
                     continue;
                 }
                 case "5": {
-                    AddMovie.insertMovie();
+                    AddMovie.insertMovie(connection);
                     continue;
                 }
                 case "6": {
-                    AddGenre.insertGenre();
+                    AddGenre.insertGenre(connection);
                     continue;
                 }
                 case "7":{
-                    GetActors.findActorsofFilm();
+                    GetActors.findActorsofFilm(connection);
                     continue;
                 }
                 case "8":{
-                    GetDirectory.findDirectorofFilm();
+                    GetDirectory.findDirectorofFilm(connection);
                     continue;
                 }
                 case "9": {

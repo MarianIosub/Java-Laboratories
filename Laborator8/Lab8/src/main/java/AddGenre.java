@@ -5,9 +5,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AddGenre {
-    public static void insertGenre() throws SQLException {
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
+    public static void insertGenre(Connection connection) throws SQLException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your Genre title: ");
         String title = scanner.nextLine();

@@ -5,13 +5,11 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GetDirectory {
-    public static void findDirectorofFilm() throws SQLException {
+    public static void findDirectorofFilm(Connection connection) throws SQLException {
         boolean found=false;
         System.out.print("Please input your movie title: ");
         Scanner scanner=new Scanner(System.in);
         String movie=scanner.nextLine();
-        DBConnection dbConnection = DBConnection.getDBConnection();
-        Connection connection = dbConnection.getConnection();
         PreparedStatement statement=connection.prepareStatement("Select ID from movies where title=?");
         statement.setString(1,movie);
         ResultSet resultSet=statement.executeQuery();
