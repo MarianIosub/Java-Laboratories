@@ -12,6 +12,7 @@ public class GetMovie {
         stmt.setString(1, title);
         ResultSet rs = stmt.executeQuery();
         boolean found = false;
+        String filmID = null;
         while (rs.next()) {
             found = true;
             System.out.print("Your film has the ID: " + rs.getString("ID"));
@@ -19,9 +20,30 @@ public class GetMovie {
             System.out.print(" was released on: " + rs.getString("release_date"));
             System.out.print(", has duration : " + rs.getString("duration"));
             System.out.print(" minutes and rating: " + rs.getString("score"));
+            filmID = rs.getString("ID");
         }
         if (!found) {
             System.out.println("Your film wasn't found");
+        }
+        if (found) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM MOVIE_GENRE WHERE ID_MOVIE=?");
+            statement.setInt(1, Integer.parseInt(filmID));
+            ResultSet genreResult = statement.executeQuery();
+            boolean genreFound = false;
+            String genreID = null;
+            while (genreResult.next()) {
+                genreID = genreResult.getString("id_genre");
+                genreFound = true;
+            }
+            if (genreFound) {
+                PreparedStatement getGenre = connection.prepareStatement("SELECT Genre FROM GENREs WHERE ID=?");
+                getGenre.setInt(1, Integer.parseInt(genreID));
+                ResultSet getGenreName = getGenre.executeQuery();
+                while (getGenreName.next()) {
+                    System.out.println(". Your film has genre " + getGenreName.getString("Genre")+".");
+
+                }
+            }
         }
     }
 
@@ -45,6 +67,27 @@ public class GetMovie {
         if (!found) {
             System.out.println("Your film wasn't found");
         }
+        if (found) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM MOVIE_GENRE WHERE ID_MOVIE=?");
+            statement.setInt(1, id);
+            ResultSet genreResult = statement.executeQuery();
+            boolean genreFound = false;
+            String genreID = null;
+            while (genreResult.next()) {
+                genreID = genreResult.getString("id_genre");
+                genreFound = true;
+            }
+            if (genreFound) {
+                PreparedStatement getGenre = connection.prepareStatement("SELECT Genre FROM GENREs WHERE ID=?");
+                getGenre.setInt(1, Integer.parseInt(genreID));
+                ResultSet getGenreName = getGenre.executeQuery();
+                while (getGenreName.next()) {
+                    System.out.println(". Your film has genre " + getGenreName.getString("Genre")+".");
+
+                }
+            }
+        }
     }
 }
+
 
