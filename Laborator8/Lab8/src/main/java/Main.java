@@ -1,10 +1,11 @@
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void shell() throws SQLException, InterruptedException {
+    public static void shell() throws SQLException, InterruptedException, IOException {
         DBConnection dbConnection = DBConnection.getDBConnection();
         Connection connection = dbConnection.getConnection();
         Scanner scanner = new Scanner(System.in);
@@ -44,7 +45,11 @@ public class Main {
                     GetDirectory.findDirectorofFilm(connection);
                     continue;
                 }
-                case "9": {
+                case "9":{
+                    GetFromIMDB.findOnIMDB();
+                    continue;
+                }
+                case "10": {
                     System.out.println("Thank you! Have a nice day!");
                     System.exit(1);
                 }
@@ -67,11 +72,12 @@ public class Main {
         System.out.println("6 - Add a Genre");
         System.out.println("7 - Find actors by film name");
         System.out.println("8 - Find director by film name");
-        System.out.println("9 - Quit\n\n");
+        System.out.println("9 - Find a movie on IMDB");
+        System.out.println("10 - Quit\n\n");
         System.out.print("Type your command index: ");
     }
 
-    public static void main(String[] args) throws SQLException, InterruptedException {
+    public static void main(String[] args) throws SQLException, InterruptedException, IOException {
         shell();
     }
 }
