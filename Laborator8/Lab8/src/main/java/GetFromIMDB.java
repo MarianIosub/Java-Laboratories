@@ -23,6 +23,7 @@ public class GetFromIMDB {
                 System.out.println("- genre: "+movieDetails[5]);
                 System.out.println("- score: "+movieDetails[14]);
                 System.out.println("- director: "+movieDetails[9]);
+                System.out.println("- actors: "+movieDetails[12]);
                 return;
             }
         }
