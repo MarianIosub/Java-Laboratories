@@ -24,8 +24,9 @@ public class GetDirectory {
         System.out.println("Your film has the director: ");
 
         while(directorResult.next()){
+            Director director=new Director(directorResult.getString("DIRECTOR"));
             found=true;
-            System.out.println("-"+directorResult.getString("DIRECTOR"));
+            System.out.println("-"+director);
         }
         if(!found){
             System.out.println("You film hasn't actors saved!");

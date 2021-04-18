@@ -24,7 +24,8 @@ public class GetActors {
         boolean found=false;
         while(actorsResult.next()){
             found=true;
-            System.out.println("-"+actorsResult.getString("ACTOR"));
+            Actor actor=new Actor(actorsResult.getString("ACTOR"));
+            System.out.println("-"+actor);
         }
         if(!found){
             System.out.println("You film was not found or it hasn't actors saved!");

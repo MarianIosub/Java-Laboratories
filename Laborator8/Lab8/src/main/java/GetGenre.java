@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class GetGenre {
     public static void findGenreByName(Connection connection) throws SQLException {
-
+        Genre genre=null;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your Genre title: ");
         String title = scanner.nextLine();
@@ -16,8 +16,8 @@ public class GetGenre {
         boolean found = false;
         while (rs.next()) {
             found = true;
-            System.out.print("Your genre has the ID: " + rs.getString("ID"));
-            System.out.print(" and the genre is: " + rs.getString("genre"));
+            genre=new Genre(Integer.parseInt(rs.getString("ID")),rs.getString("genre"));
+            System.out.println(genre);
         }
         if (!found) {
             System.out.println("Your genre wasn't found");
@@ -25,6 +25,7 @@ public class GetGenre {
     }
 
     public static void findGenreByID(Connection connection) throws SQLException {
+        Genre genre=null;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your Genre ID: ");
         Integer id = scanner.nextInt();
@@ -34,8 +35,8 @@ public class GetGenre {
         boolean found = false;
         while (rs.next()) {
             found = true;
-            System.out.print("Your genre has the ID: " + rs.getString("ID"));
-            System.out.print(" and the genre is: " + rs.getString("genre"));
+            genre=new Genre(Integer.parseInt(rs.getString("ID")),rs.getString("genre"));
+            System.out.println(genre);
         }
         if (!found) {
             System.out.println("Your genre wasn't found");

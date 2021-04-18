@@ -1,11 +1,12 @@
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void shell() throws SQLException, InterruptedException, IOException {
+    public static void shell() throws SQLException, InterruptedException, IOException, ParseException {
         DBConnection dbConnection = DBConnection.getDBConnection();
         Connection connection = dbConnection.getConnection();
         Scanner scanner = new Scanner(System.in);
@@ -77,7 +78,7 @@ public class Main {
         System.out.print("Type your command index: ");
     }
 
-    public static void main(String[] args) throws SQLException, InterruptedException, IOException {
+    public static void main(String[] args) throws SQLException, InterruptedException, IOException, ParseException {
         shell();
     }
 }

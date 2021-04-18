@@ -4,7 +4,7 @@ public class DBConnection {
     private Connection connection;
     private final String url="jdbc:oracle:thin:@localhost:1521:xe";
     private final String user="student";
-    private final String password="STUDENT";
+    private final String password="student";
     private DBConnection() {
 
         try {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class GetMovie {
 
     public static void findMovieByName(Connection connection) throws SQLException {
-
+        Movie movie=null;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your film title: ");
         String title = scanner.nextLine();
@@ -15,15 +15,12 @@ public class GetMovie {
         String filmID = null;
         while (rs.next()) {
             found = true;
-            System.out.print("Your film has the ID: " + rs.getString("ID"));
-            System.out.print(" and the title: " + rs.getString("Title"));
-            System.out.print(" was released on: " + rs.getString("release_date"));
-            System.out.print(", has duration : " + rs.getString("duration"));
-            System.out.print(" minutes and rating: " + rs.getString("score"));
-            filmID = rs.getString("ID");
+            filmID=rs.getString("ID");
+            movie= new Movie(rs.getString("Title"),Integer.parseInt(rs.getString("ID")),null,Integer.parseInt(rs.getString("duration")),rs.getDouble("score"),rs.getDate("release_date"));
         }
         if (!found) {
             System.out.println("Your film wasn't found");
+            return;
         }
         if (found) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM MOVIE_GENRE WHERE ID_MOVIE=?");
@@ -40,15 +37,16 @@ public class GetMovie {
                 getGenre.setInt(1, Integer.parseInt(genreID));
                 ResultSet getGenreName = getGenre.executeQuery();
                 while (getGenreName.next()) {
-                    System.out.println(". Your film has genre " + getGenreName.getString("Genre")+".");
+                    movie.setGenre(getGenreName.getString("Genre"));
 
                 }
+                System.out.println(movie);
             }
         }
     }
 
     public static void findMovieByID(Connection connection) throws SQLException {
-
+        Movie movie=null;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type your film ID: ");
         Integer id = scanner.nextInt();
@@ -58,11 +56,7 @@ public class GetMovie {
         boolean found = false;
         while (rs.next()) {
             found = true;
-            System.out.print("Your film has the ID: " + rs.getString("ID"));
-            System.out.print(" and the title: " + rs.getString("Title"));
-            System.out.print(" was released on: " + rs.getString("release_date"));
-            System.out.print(", has duration : " + rs.getString("duration"));
-            System.out.print(" minutes and rating: " + rs.getString("score"));
+            movie= new Movie(rs.getString("Title"),Integer.parseInt(rs.getString("ID")),null,Integer.parseInt(rs.getString("duration")),rs.getDouble("score"),rs.getDate("release_date"));
         }
         if (!found) {
             System.out.println("Your film wasn't found");
@@ -82,9 +76,10 @@ public class GetMovie {
                 getGenre.setInt(1, Integer.parseInt(genreID));
                 ResultSet getGenreName = getGenre.executeQuery();
                 while (getGenreName.next()) {
-                    System.out.println(". Your film has genre " + getGenreName.getString("Genre")+".");
+                    movie.setGenre(getGenreName.getString("Genre"));
 
                 }
+                System.out.println(movie);
             }
         }
     }
