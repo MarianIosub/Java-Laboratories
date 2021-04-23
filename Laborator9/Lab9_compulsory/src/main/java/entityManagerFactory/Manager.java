@@ -7,17 +7,18 @@ import javax.persistence.Persistence;
 public class Manager {
     private EntityManagerFactory factory;
     private EntityManager manager;
-    private Manager(){
-    this.factory= Persistence.createEntityManagerFactory("Lab9_compulsory");
-    this.manager=factory.createEntityManager();
-    }
-    public static Manager useManager(){
-        Manager manager=new Manager();
-        return manager;
+    private static Manager managerInstance = null;
+
+    private Manager() {
+        this.factory = Persistence.createEntityManagerFactory("Lab9_compulsory");
+        this.manager = factory.createEntityManager();
     }
 
-    public EntityManagerFactory getFactory() {
-        return factory;
+    public static Manager getInstance() {
+        if (managerInstance == null) {
+            managerInstance = new Manager();
+        }
+        return managerInstance;
     }
 
     public EntityManager getManager() {

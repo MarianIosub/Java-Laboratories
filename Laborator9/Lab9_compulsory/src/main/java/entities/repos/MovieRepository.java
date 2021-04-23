@@ -10,25 +10,29 @@ public class MovieRepository {
     static EntityManager manager;
 
     public MovieRepository() {
-        Manager managerInstance=Manager.useManager();
-        manager= managerInstance.getManager();
-    }
-    public static Movies findByID(String id){
+        Manager managerInstance = Manager.getInstance();
+        manager = managerInstance.getManager();
         manager.getTransaction().begin();
-        Movies movie=manager.find(Movies.class,id);
+    }
+
+    public static Movies findByID(String id) {
+
+        Movies movie = manager.find(Movies.class, id);
         manager.getTransaction();
         return movie;
 
     }
-    public static void create(Movies movie){
+
+    public static void create(Movies movie) {
         manager.persist(movie);
         manager.getTransaction().commit();
 
     }
-    public static List<Movies> findByName(String name){
-        List<Movies> moviesFound= (List<Movies>) manager.createNamedQuery("Movies.findByName")
-                            .setParameter("title",name)
-                            .getResultList();
+
+    public static List<Movies> findByName(String name) {
+        List<Movies> moviesFound = (List<Movies>) manager.createNamedQuery("Movies.findByName")
+                .setParameter("title", name)
+                .getResultList();
         return moviesFound;
     }
 
@@ -36,7 +40,8 @@ public class MovieRepository {
     public static void setManager(EntityManager manager) {
         MovieRepository.manager = manager;
     }
-    public static void closeManager(){
+
+    public static void closeManager() {
         manager.close();
     }
 }
