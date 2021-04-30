@@ -14,7 +14,8 @@ public class MovieRepositoryTest {
  @Test
     public void findByID(){
      MovieRepository.setManager(manager.getManager());
-     Movies movies1= MovieRepository.findByID("1");
+     MovieRepository movieRepository=new MovieRepository();
+     Movies movies1= movieRepository.findByID("1");
      assertEquals("120",movies1.getDuration());
  }
 }

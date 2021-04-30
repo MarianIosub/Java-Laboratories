@@ -11,7 +11,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Lab9_compulsory" />
+          <element id="module-output" name="Lab9_compulsory+optional" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.eclipse.persistence:eclipselink:2.7.8" />
@@ -22,7 +22,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/Lab9_compulsory-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Lab9_compulsory/web/Web" />
+      <element id="javaee-facet-resources" facet="Lab9_compulsory+optional/web/Web" />
     </root>
   </artifact>
 </component>

@@ -17,11 +17,16 @@ public class Manager {
     public static Manager getInstance() {
         if (managerInstance == null) {
             managerInstance = new Manager();
+            managerInstance.getManager().getTransaction().begin();
         }
+
         return managerInstance;
     }
 
     public EntityManager getManager() {
         return manager;
+    }
+    public static void closeManager() {
+        Manager.getInstance().getManager().close();
     }
 }

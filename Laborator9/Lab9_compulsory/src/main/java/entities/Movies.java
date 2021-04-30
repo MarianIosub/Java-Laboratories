@@ -7,9 +7,10 @@ import java.sql.Date;
 @Entity
 @Table(name = "MOVIES")
 @NamedQueries(
-        {@NamedQuery(name = "Movies.findByName", query = "SELECT m FROM Movies m where m.title=:title")}
+        {@NamedQuery(name = "Movies.findByName", query = "SELECT m FROM Movies m where m.title=:title"),
+        @NamedQuery(name="Movies.chart",query="Select m from Movies M")}
 )
-public class Movies {
+public class Movies implements Comparable<Movies> {
     @Id
     @SequenceGenerator(name = "sequence",
             sequenceName = "movies_id_seq")
@@ -89,5 +90,11 @@ public class Movies {
                 ", duration='" + duration + '\'' +
                 ", score=" + score +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Movies o) {
+        return Double.compare(this.score,o.getScore());
     }
 }
