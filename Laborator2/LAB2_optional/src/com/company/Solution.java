@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This is the definition of the class Solution
  */
@@ -49,5 +52,33 @@ public class Solution {
                 i--;
         }
         System.out.println("Total cost: " + totalCost);
+    }
+
+    public void getBonusSolution(Problem problem) {
+        List<SourceToDestinationPrice> prices = new ArrayList<>();
+        for (int i = 0; i < problem.getNrSources(); i++) {
+            for (int j = 0; j < problem.getNrDestinations(); j++) {
+                prices.add(new SourceToDestinationPrice(problem.sources[i], problem.destinations[j], problem.matrice[i][j]));
+            }
+        }
+        prices.sort(SourceToDestinationPrice::compareTo);
+        System.out.println(prices);
+        Integer totalCost = 0;
+        for (SourceToDestinationPrice price : prices) {
+            if (price.getSource().getCapacity() > 0 && price.getDestination().getComodities() > 0) {
+                if (price.getDestination().getComodities() > price.getSource().getCapacity()) {
+                    System.out.println(price.getSource().getName() + " -> " + price.getDestination().getName() + ": " + price.getSource().getCapacity() + " units * cost " + price.getPrice() + " = " + (price.getSource().getCapacity() * price.getPrice()));
+                    totalCost += price.getSource().getCapacity() * price.getPrice();
+                    price.getDestination().setComodities(price.getDestination().getComodities() - price.getSource().getCapacity());
+                    price.getSource().setSupply(0);
+                } else {
+                    System.out.println(price.getSource().getName() + " -> " + price.getDestination().getName() + ": " + price.getDestination().getComodities() + " units * cost " + price.getPrice() + " = " + (price.getDestination().getComodities() * price.getPrice()));
+                    totalCost+=price.getDestination().getComodities() * price.getPrice();
+                    price.getSource().setSupply(price.getSource().getCapacity()-price.getDestination().getComodities());
+                    price.getDestination().setComodities(0);
+                }
+            }
+        }
+        System.out.println("Total cost is:   "+totalCost);
     }
 }

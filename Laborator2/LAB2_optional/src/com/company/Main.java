@@ -17,13 +17,14 @@ public class Main {
         problem.addDestination(X);
         problem.addDestination(Y);
         problem.addDestination(Z);
-        int[][] matrice = {{2, 3, 1},
-                {5, 4, 8},
-                {5, 6, 8}};
+        int[][] matrice = { {2, 3, 1},
+                            {5, 4, 8},
+                            {5, 6, 8}};
         problem.setMatrice(matrice);
         problem.getMatrice();
         Solution solution = new Solution();
-        solution.getSolution(problem);
+//        solution.getSolution(problem);
+        solution.getBonusSolution(problem);
 
     }
 }
