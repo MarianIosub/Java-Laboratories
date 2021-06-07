@@ -14,5 +14,5 @@ Java tehnologies used:
 - Concurrency: Threads and Locks
 - Java Persistence API (JPA)
 - Network Programming
-- GUI (nefinalizat si neintegrat)
+- GUI - Java Swing
 - many more
