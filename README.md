@@ -1,6 +1,6 @@
 # Java
 
-These problems was resolved for Java practice course from Faculty of Computer Science Iasi (2020/2021).
+These problems were resolved for Java practice course from Faculty of Computer Science Iasi (2020/2021).
 
 Java tehnologies used:
 
